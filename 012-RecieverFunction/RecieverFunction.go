@@ -38,7 +38,7 @@ func (start Coordinate) calculateDistance(end Coordinate) Coordinate {
 func main() {
 	myStruct := MyStruct{x: 10, y: 10}
 
-	// modifyNormal(1, 2, &myStruct)
+	modifyNormal(1, 2, &myStruct)
 
 	myStruct.modifyWithRec(3, 4)
 	fmt.Println(myStruct)
