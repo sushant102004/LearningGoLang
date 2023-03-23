@@ -12,7 +12,7 @@ func main() {
 		South
 	)
 
-	fmt.Println(East)
+	fmt.Println(West)
 
 	east := East
 	fmt.Println(east)

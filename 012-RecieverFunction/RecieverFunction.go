@@ -43,7 +43,7 @@ func main() {
 	myStruct.modifyWithRec(3, 4)
 	fmt.Println(myStruct)
 
-	startCord := Coordinate{4, 2}
+	startCord := Coordinate{14, 2}
 	endCord := Coordinate{5, 1}
 
 	distance := startCord.calculateDistance(endCord)
