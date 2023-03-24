@@ -1,3 +1,3 @@
-module github.com/sushant102004/learning-go-lang
+module learningGoLang
 
 go 1.19
