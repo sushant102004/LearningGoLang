@@ -41,9 +41,29 @@ func printError() func(errorCode string) {
 	}
 }
 
+// Closures
+// When we take value from outside then a copy of that value is created. It is closure same as JS
+
+func calculatePrice(price float64, discountFunc func(price float64) float64) float64 {
+	return price - (price * discountFunc(price))
+}
+
+func calculateDiscount(price float64) float64 {
+	discount := 0.0
+	if price < 100 {
+		discount = 0.03
+	} else {
+		discount = 0.07
+	}
+	fmt.Println("Discount: ", discount)
+	return discount
+}
+
 func main() {
 	hello()
 
 	// Passing printError() as argument. It will have access to errorCode
 	customError(printError(), " 504")
+	finalPrice := calculatePrice(20760.0, calculateDiscount)
+	fmt.Println(finalPrice)
 }
