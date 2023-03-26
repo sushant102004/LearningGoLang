@@ -1,14 +1,25 @@
 package main
 
 import (
-	"errors"
+	// "errors"
 	"fmt"
 	"os"
+	"strconv"
 )
+
+type CustomError struct {
+	message string
+	code    int
+}
+
+func (c CustomError) Error() string {
+	return c.message + " " + strconv.Itoa(c.code)
+}
 
 func divide(a, b float64) (float64, error) {
 	if b == 0 {
-		return float64(0), errors.New("can't divide by zero")
+		// return float64(0), errors.New("can't divide by zero")
+		return 0.0, CustomError{"can't divide by zero", -1}
 	} else {
 		return float64(a) / float64(b), nil
 	}
@@ -23,7 +34,7 @@ func main() {
 		fmt.Println(string(file))
 	}
 
-	ans, error := divide(3, 12)
+	ans, error := divide(3, 0)
 
 	if error != nil {
 		fmt.Println(error)
