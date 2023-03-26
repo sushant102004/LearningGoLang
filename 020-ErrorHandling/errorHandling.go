@@ -3,6 +3,7 @@ package main
 import (
 	// "errors"
 	"fmt"
+	"log"
 	"os"
 	"strconv"
 )
@@ -37,7 +38,7 @@ func main() {
 	ans, error := divide(3, 0)
 
 	if error != nil {
-		fmt.Println(error)
+		log.Fatal(error)
 	} else {
 		fmt.Println(ans)
 	}
