@@ -1,3 +1,4 @@
+// Function literals accept other functions as parameters and can also return function as parameter.
 // These are also called closures in JS
 
 package main
@@ -15,6 +16,9 @@ func hello() {
 	world()
 }
 
+// customError will trim the code and set errorCode appropriately.
+// It have fn function which we are calling at last to give errorCode result to another function.
+
 func customError(fn func(code string), code string) {
 	errorCode := strings.Trim(code, " ")
 	errorMessage := ""
@@ -24,6 +28,8 @@ func customError(fn func(code string), code string) {
 	} else {
 		errorMessage = "Internal Server Error"
 	}
+
+	// Giving control to other function.
 	fn(errorMessage)
 }
 
@@ -37,5 +43,7 @@ func printError() func(errorCode string) {
 
 func main() {
 	hello()
+
+	// Passing printError() as argument. It will have access to errorCode
 	customError(printError(), " 504")
 }
