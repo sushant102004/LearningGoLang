@@ -6,7 +6,17 @@ import (
 	"unicode"
 )
 
+func printSomething(msg string) {
+	fmt.Println(msg)
+}
+
 func main() {
+	go printSomething("Hello")
+	go printSomething("I'm")
+	go printSomething("Sushant")
+	go printSomething("From")
+	go printSomething("Panipat")
+
 	var capitalized []rune
 
 	data := []rune{'a', 'b', 'c', 'd'}
