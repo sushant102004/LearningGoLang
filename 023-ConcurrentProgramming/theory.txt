@@ -1,0 +1,11 @@
+Usually program run line by line.
+
+But in concurrent programming we can run code in parallel.
+
+There are two types of concurrent programming: 
+1. Threaded Programming
+2. Asynchronous Programming
+
+Threaded Programming: In this code run parallely based on number of CPU.
+
+Asynchronous Programming: In this code can pause and resume.
