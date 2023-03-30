@@ -8,7 +8,12 @@ import (
 )
 
 func main() {
-	myChan := make(chan int)
+	// Here 2 is used to create a buffered channel.
+	/*
+		Buffered channels allow us to send a number of values without having
+		reciever for each of that value.
+	*/
+	myChan := make(chan int, 2)
 	wg := &sync.WaitGroup{}
 
 	wg.Add(2)
@@ -24,15 +29,19 @@ func main() {
 	*/
 
 	// This is for recieving data into channel.
-	go func(myChan chan int, wg *sync.WaitGroup) {
-		fmt.Println(<-myChan)
+	go func(myChan <-chan int, wg *sync.WaitGroup) {
+		val, isChanelOpen := <-myChan
+
+		fmt.Println(isChanelOpen)
+		fmt.Println(val)
 		wg.Done()
 	}(myChan, wg)
 
 	// This is for sending data into channel.
-	go func(myChan chan int, wg *sync.WaitGroup) {
+	go func(myChan chan<- int, wg *sync.WaitGroup) {
 		myChan <- 2
 		wg.Done()
+		close(myChan)
 	}(myChan, wg)
 
 	wg.Wait()
