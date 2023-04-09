@@ -24,7 +24,7 @@ func (rectangle Rectangle) area() float64 {
 }
 
 // Salary Calculation using interface.
-type SalaryCalculator interface {
+type Employee interface {
 	CalculateSalary() int
 }
 
@@ -47,7 +47,7 @@ func (c Contract) CalculateSalary() int {
 	return c.basePay
 }
 
-func totalSalary(employees []SalaryCalculator) int {
+func totalSalary(employees []Employee) int {
 	totalExpense := 0
 
 	for _, person := range employees {
@@ -84,7 +84,7 @@ func main() {
 		basePay: 10000,
 	}
 
-	employees := []SalaryCalculator{john, ella, ramesh}
+	employees := []Employee{john, ella, ramesh}
 
 	total := totalSalary(employees)
 	fmt.Println(total)
